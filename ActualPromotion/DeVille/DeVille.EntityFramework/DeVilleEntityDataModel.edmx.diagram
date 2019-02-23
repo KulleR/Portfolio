@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="87e1b207e6244dc497d9ca7717cc0056" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="DeVilleModel.Employee" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeVilleModel.KindsOfActivity" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeVilleModel.News" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeVilleModel.OnlineAppointment" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeVilleModel.Option" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeVilleModel.PhotoAlbum" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeVilleModel.PhotoGallery" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeVilleModel.Photo" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeVilleModel.Product" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeVilleModel.Review" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeVilleModel.ServiceCategory" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeVilleModel.Service" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeVilleModel.Vacancy" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="DeVilleModel.FK__Employees__Activ__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="DeVilleModel.FK__OnlineApp__Servi__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="DeVilleModel.FK__Services__Catego__1273C1CD" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DeVilleModel.Post" Width="1.5" PointX="3.3182574172123602" PointY="24.91553771165923" />
+        <EntityTypeShape EntityType="DeVilleModel.User" Width="1.5" PointX="9.625" PointY="5.75" />
+        <EntityTypeShape EntityType="DeVilleModel.Role" Width="1.5" PointX="2.4607427336558434" PointY="22.777143921133664" />
+        <AssociationConnector Association="DeVilleModel.FK__Users__RoleId__38996AB5" />
+        <EntityTypeShape EntityType="DeVilleModel.ProductCategory" Width="1.5" PointX="1.4541046663439388" PointY="16.048812560759863" />
+        <AssociationConnector Association="DeVilleModel.FK__Products__Catego__3D5E1FD2" />
+        <AssociationConnector Association="DeVilleModel.FK__PhotoAlbu__Galle__4222D4EF" />
+        <AssociationConnector Association="DeVilleModel.FK__Photos__AlbumId__4316F928" />
+        <EntityTypeShape EntityType="DeVilleModel.ServiceSubcategory" Width="1.5" PointX="7.5926545502583753" PointY="12.852692520642975" />
+        <AssociationConnector Association="DeVilleModel.FK__ServiceSu__Categ__534D60F1" />
+        <AssociationConnector Association="DeVilleModel.FK__Services__Subcat__5441852A" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

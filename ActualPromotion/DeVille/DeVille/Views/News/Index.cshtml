@@ -1,0 +1,56 @@
+﻿@using Deville.EntityDataModel
+@model IEnumerable<News>
+
+@{
+    ViewBag.Title = "Новости";
+    Layout = "~/Views/Layouts/DefaultLayouts.cshtml";
+}
+
+@section styles {
+    <style>
+        .main-content .top {
+            background-image: url('/content/img/banner1.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 300px;
+        }
+    </style>
+}
+
+<section class="top">
+    <!-- There located top bckg image, which different in other pages -->
+    <header class="capital-letter-pink">
+        <div>Окунись в мир</div>
+        <div>красоты и комфорта...</div>
+    </header>
+</section>
+<section class="content reviews">
+    @if (Model.Count() > 0)
+    {
+        <div class="pure-g">
+            @foreach (News n in Model)
+            {
+                <div class="pure-u-1-3 wrap">
+                    <div class="container">
+                        <div class="img">
+                            <img class="pure-img" src="@n.ImgCover" alt="@Html.DisplayFor(model => n.ImgCover)" title="@Html.DisplayFor(model => n.ImgCover)" />
+                        </div>
+                        <div class="r-content">
+                            <div class="name capital-letter-pink">@n.Title</div>
+                            <div class="message">@n.Text.Substring(0, n.Text.Length > 150 ? 150 : n.Text.Length)</div>
+                            <p>
+                                @Html.ActionLink("Подробнее", "View", new { id = n.Id }, new { @class = "pure-button" })
+                            </p>
+                            <div class="date">@n.CreateDate</div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        @: Новостей нет.
+    }
+
+</section>

@@ -1,0 +1,32 @@
+﻿@using Deville.EntityDataModel
+@model News
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Layouts/DefaultLayouts.cshtml";
+}
+
+@section styles {
+    <style>
+        .main-content .top {
+            background-image: url('/content/img/banner1.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 300px;
+        }
+    </style>
+}
+
+<section class="top">
+    <!-- There located top bckg image, which different in other pages -->
+    <header class="capital-letter-pink">
+        <div>Окунись в мир</div>
+        <div>красоты и комфорта...</div>
+    </header>
+</section>
+<section class="content reviews">
+    <h1 class="capital-letter-pink">@Model.Title</h1>
+    <div class="articles">
+        @Model.Text
+    </div>
+</section>

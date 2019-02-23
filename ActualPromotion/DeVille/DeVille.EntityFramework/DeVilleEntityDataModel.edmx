@@ -1,0 +1,953 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DeVilleModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DeVilleModelStoreContainer">
+          <EntitySet Name="Employees" EntityType="DeVilleModel.Store.Employees" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="KindsOfActivity" EntityType="DeVilleModel.Store.KindsOfActivity" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="News" EntityType="DeVilleModel.Store.News" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OnlineAppointments" EntityType="DeVilleModel.Store.OnlineAppointments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Options" EntityType="DeVilleModel.Store.Options" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PhotoAlbum" EntityType="DeVilleModel.Store.PhotoAlbum" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PhotoGalleries" EntityType="DeVilleModel.Store.PhotoGalleries" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Photos" EntityType="DeVilleModel.Store.Photos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Posts" EntityType="DeVilleModel.Store.Posts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductCategories" EntityType="DeVilleModel.Store.ProductCategories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Products" EntityType="DeVilleModel.Store.Products" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Reviews" EntityType="DeVilleModel.Store.Reviews" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Roles" EntityType="DeVilleModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ServiceCategories" EntityType="DeVilleModel.Store.ServiceCategories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Services" EntityType="DeVilleModel.Store.Services" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ServiceSubcategories" EntityType="DeVilleModel.Store.ServiceSubcategories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="DeVilleModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Vacancies" EntityType="DeVilleModel.Store.Vacancies" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__Employees__Activ__1DE57479" Association="DeVilleModel.Store.FK__Employees__Activ__1DE57479">
+            <End Role="KindsOfActivity" EntitySet="KindsOfActivity" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OnlineApp__Servi__4E88ABD4" Association="DeVilleModel.Store.FK__OnlineApp__Servi__4E88ABD4">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="OnlineAppointments" EntitySet="OnlineAppointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhotoAlbu__Galle__4222D4EF" Association="DeVilleModel.Store.FK__PhotoAlbu__Galle__4222D4EF">
+            <End Role="PhotoGalleries" EntitySet="PhotoGalleries" />
+            <End Role="PhotoAlbum" EntitySet="PhotoAlbum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Photos__AlbumId__4316F928" Association="DeVilleModel.Store.FK__Photos__AlbumId__4316F928">
+            <End Role="PhotoAlbum" EntitySet="PhotoAlbum" />
+            <End Role="Photos" EntitySet="Photos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Products__Catego__3D5E1FD2" Association="DeVilleModel.Store.FK__Products__Catego__3D5E1FD2">
+            <End Role="ProductCategories" EntitySet="ProductCategories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Services__Catego__4D94879B" Association="DeVilleModel.Store.FK__Services__Catego__4D94879B">
+            <End Role="ServiceCategories" EntitySet="ServiceCategories" />
+            <End Role="Services" EntitySet="Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Services__Subcat__5441852A" Association="DeVilleModel.Store.FK__Services__Subcat__5441852A">
+            <End Role="ServiceSubcategories" EntitySet="ServiceSubcategories" />
+            <End Role="Services" EntitySet="Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceSu__Categ__534D60F1" Association="DeVilleModel.Store.FK__ServiceSu__Categ__534D60F1">
+            <End Role="ServiceCategories" EntitySet="ServiceCategories" />
+            <End Role="ServiceSubcategories" EntitySet="ServiceSubcategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__RoleId__38996AB5" Association="DeVilleModel.Store.FK__Users__RoleId__38996AB5">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ActivityId" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Phone" Type="varchar" MaxLength="255" />
+          <Property Name="Birthday" Type="varchar" MaxLength="255" />
+          <Property Name="Photo" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="KindsOfActivity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Activity" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Text" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="ImgCover" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="OnlineAppointments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="AuthorName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Phone" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Options">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OptionName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="OptionValue" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="PhotoAlbum">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ImgCover" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="GalleryId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhotoGalleries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ImgCover" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Photos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ImgUrl" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="AlbumId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Posts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Content" Type="text" Nullable="false" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="511" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="127" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="ImgCover" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="127" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="ImgCover" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Article" Type="varchar" MaxLength="255" />
+          <Property Name="Price" Type="money" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="IsNovelty" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reviews">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Message" Type="varchar(max)" Nullable="false" />
+          <Property Name="AuthorFullName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="AuthorPhoto" Type="varchar" Nullable="false" MaxLength="511" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="varchar" Nullable="false" MaxLength="127" />
+          <Property Name="CyrillicName" Type="varchar" MaxLength="127" />
+        </EntityType>
+        <EntityType Name="ServiceCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="127" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="ImgCover" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="SubcategoryId" Type="int" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="127" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="VirtuosoPrice" Type="money" />
+          <Property Name="ExpertPrice" Type="money" />
+          <Property Name="HandymanPrice" Type="money" />
+          <Property Name="Price" Type="money" />
+          <Property Name="ImgCover" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ServiceSubcategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="127" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="127" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="127" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vacancies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="127" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="ImgCover" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Demands" Type="varchar" MaxLength="255" />
+          <Property Name="Duties" Type="varchar" MaxLength="255" />
+          <Property Name="Сondition" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK__Employees__Activ__1DE57479">
+          <End Role="KindsOfActivity" Type="DeVilleModel.Store.KindsOfActivity" Multiplicity="1" />
+          <End Role="Employees" Type="DeVilleModel.Store.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KindsOfActivity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="ActivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OnlineApp__Servi__4E88ABD4">
+          <End Role="Services" Type="DeVilleModel.Store.Services" Multiplicity="1" />
+          <End Role="OnlineAppointments" Type="DeVilleModel.Store.OnlineAppointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OnlineAppointments">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhotoAlbu__Galle__4222D4EF">
+          <End Role="PhotoGalleries" Type="DeVilleModel.Store.PhotoGalleries" Multiplicity="1" />
+          <End Role="PhotoAlbum" Type="DeVilleModel.Store.PhotoAlbum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhotoGalleries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhotoAlbum">
+              <PropertyRef Name="GalleryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Photos__AlbumId__4316F928">
+          <End Role="PhotoAlbum" Type="DeVilleModel.Store.PhotoAlbum" Multiplicity="1" />
+          <End Role="Photos" Type="DeVilleModel.Store.Photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhotoAlbum">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Photos">
+              <PropertyRef Name="AlbumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Products__Catego__3D5E1FD2">
+          <End Role="ProductCategories" Type="DeVilleModel.Store.ProductCategories" Multiplicity="1" />
+          <End Role="Products" Type="DeVilleModel.Store.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Services__Catego__4D94879B">
+          <End Role="ServiceCategories" Type="DeVilleModel.Store.ServiceCategories" Multiplicity="1" />
+          <End Role="Services" Type="DeVilleModel.Store.Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Services">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Services__Subcat__5441852A">
+          <End Role="ServiceSubcategories" Type="DeVilleModel.Store.ServiceSubcategories" Multiplicity="0..1" />
+          <End Role="Services" Type="DeVilleModel.Store.Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceSubcategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Services">
+              <PropertyRef Name="SubcategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceSu__Categ__534D60F1">
+          <End Role="ServiceCategories" Type="DeVilleModel.Store.ServiceCategories" Multiplicity="1" />
+          <End Role="ServiceSubcategories" Type="DeVilleModel.Store.ServiceSubcategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServiceSubcategories">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__RoleId__38996AB5">
+          <End Role="Roles" Type="DeVilleModel.Store.Roles" Multiplicity="1" />
+          <End Role="Users" Type="DeVilleModel.Store.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DeVilleModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DeVilleEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="DeVilleModel.Employee" />
+          <EntitySet Name="KindsOfActivities" EntityType="DeVilleModel.KindsOfActivity" />
+          <EntitySet Name="News" EntityType="DeVilleModel.News" />
+          <EntitySet Name="OnlineAppointments" EntityType="DeVilleModel.OnlineAppointment" />
+          <EntitySet Name="Options" EntityType="DeVilleModel.Option" />
+          <EntitySet Name="PhotoAlbums" EntityType="DeVilleModel.PhotoAlbum" />
+          <EntitySet Name="PhotoGalleries" EntityType="DeVilleModel.PhotoGallery" />
+          <EntitySet Name="Photos" EntityType="DeVilleModel.Photo" />
+          <EntitySet Name="Products" EntityType="DeVilleModel.Product" />
+          <EntitySet Name="Reviews" EntityType="DeVilleModel.Review" />
+          <EntitySet Name="ServiceCategories" EntityType="DeVilleModel.ServiceCategory" />
+          <EntitySet Name="Services" EntityType="DeVilleModel.Service" />
+          <EntitySet Name="Vacancies" EntityType="DeVilleModel.Vacancy" />
+          <AssociationSet Name="FK__Employees__Activ__1DE57479" Association="DeVilleModel.FK__Employees__Activ__1DE57479">
+            <End Role="KindsOfActivity" EntitySet="KindsOfActivities" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OnlineApp__Servi__20C1E124" Association="DeVilleModel.FK__OnlineApp__Servi__20C1E124">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="OnlineAppointments" EntitySet="OnlineAppointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Services__Catego__1273C1CD" Association="DeVilleModel.FK__Services__Catego__1273C1CD">
+            <End Role="ServiceCategories" EntitySet="ServiceCategories" />
+            <End Role="Services" EntitySet="Services" />
+          </AssociationSet>
+          <EntitySet Name="Posts" EntityType="DeVilleModel.Post" />
+          <EntitySet Name="Users" EntityType="DeVilleModel.User" />
+          <EntitySet Name="Roles" EntityType="DeVilleModel.Role" />
+          <AssociationSet Name="FK__Users__RoleId__38996AB5" Association="DeVilleModel.FK__Users__RoleId__38996AB5">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="ProductCategories" EntityType="DeVilleModel.ProductCategory" />
+          <AssociationSet Name="FK__Products__Catego__3D5E1FD2" Association="DeVilleModel.FK__Products__Catego__3D5E1FD2">
+            <End Role="ProductCategory" EntitySet="ProductCategories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhotoAlbu__Galle__4222D4EF" Association="DeVilleModel.FK__PhotoAlbu__Galle__4222D4EF">
+            <End Role="PhotoGallery" EntitySet="PhotoGalleries" />
+            <End Role="PhotoAlbum" EntitySet="PhotoAlbums" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Photos__AlbumId__4316F928" Association="DeVilleModel.FK__Photos__AlbumId__4316F928">
+            <End Role="PhotoAlbum" EntitySet="PhotoAlbums" />
+            <End Role="Photo" EntitySet="Photos" />
+          </AssociationSet>
+          <EntitySet Name="ServiceSubcategories" EntityType="DeVilleModel.ServiceSubcategory" />
+          <AssociationSet Name="FK__ServiceSu__Categ__534D60F1" Association="DeVilleModel.FK__ServiceSu__Categ__534D60F1">
+            <End Role="ServiceCategory" EntitySet="ServiceCategories" />
+            <End Role="ServiceSubcategory" EntitySet="ServiceSubcategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Services__Subcat__5441852A" Association="DeVilleModel.FK__Services__Subcat__5441852A">
+            <End Role="ServiceSubcategory" EntitySet="ServiceSubcategories" />
+            <End Role="Service" EntitySet="Services" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ActivityId" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Birthday" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Photo" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="KindsOfActivity" Relationship="DeVilleModel.FK__Employees__Activ__1DE57479" FromRole="Employees" ToRole="KindsOfActivity" />
+        </EntityType>
+        <EntityType Name="KindsOfActivity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Activity" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Employees" Relationship="DeVilleModel.FK__Employees__Activ__1DE57479" FromRole="KindsOfActivity" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ImgCover" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="OnlineAppointment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuthorName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Service" Relationship="DeVilleModel.FK__OnlineApp__Servi__20C1E124" FromRole="OnlineAppointments" ToRole="Services" />
+        </EntityType>
+        <EntityType Name="Option">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="OptionName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="OptionValue" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="PhotoAlbum">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ImgCover" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="GalleryId" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <NavigationProperty Name="PhotoGallery" Relationship="DeVilleModel.FK__PhotoAlbu__Galle__4222D4EF" FromRole="PhotoAlbum" ToRole="PhotoGallery" />
+          <NavigationProperty Name="Photos" Relationship="DeVilleModel.FK__Photos__AlbumId__4316F928" FromRole="PhotoAlbum" ToRole="Photo" />
+        </EntityType>
+        <EntityType Name="PhotoGallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ImgCover" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <NavigationProperty Name="PhotoAlbums" Relationship="DeVilleModel.FK__PhotoAlbu__Galle__4222D4EF" FromRole="PhotoGallery" ToRole="PhotoAlbum" />
+        </EntityType>
+        <EntityType Name="Photo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="AlbumId" Type="Int32" Nullable="false" />
+          <Property Type="String" Name="ImgUrl" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PhotoAlbum" Relationship="DeVilleModel.FK__Photos__AlbumId__4316F928" FromRole="Photo" ToRole="PhotoAlbum" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="127" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ImgCover" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Article" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <NavigationProperty Name="ProductCategory" Relationship="DeVilleModel.FK__Products__Catego__3D5E1FD2" FromRole="Product" ToRole="ProductCategory" />
+          <Property Type="Boolean" Name="IsNovelty" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="AuthorFullName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Type="String" Name="AuthorPhoto" Nullable="false" MaxLength="511" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ServiceCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="127" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ImgCover" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Services" Relationship="DeVilleModel.FK__Services__Catego__1273C1CD" FromRole="ServiceCategories" ToRole="Services" />
+          <NavigationProperty Name="ServiceSubcategories" Relationship="DeVilleModel.FK__ServiceSu__Categ__534D60F1" FromRole="ServiceCategory" ToRole="ServiceSubcategory" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="127" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="VirtuosoPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ExpertPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="HandymanPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ImgCover" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="OnlineAppointments" Relationship="DeVilleModel.FK__OnlineApp__Servi__20C1E124" FromRole="Services" ToRole="OnlineAppointments" />
+          <NavigationProperty Name="ServiceCategory" Relationship="DeVilleModel.FK__Services__Catego__1273C1CD" FromRole="Services" ToRole="ServiceCategories" />
+          <Property Type="Int32" Name="SubcategoryId" />
+          <NavigationProperty Name="ServiceSubcategory" Relationship="DeVilleModel.FK__Services__Subcat__5441852A" FromRole="Service" ToRole="ServiceSubcategory" />
+        </EntityType>
+        <EntityType Name="Vacancy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="127" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ImgCover" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Demands" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Duties" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Сondition" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__Employees__Activ__1DE57479">
+          <End Role="KindsOfActivity" Type="DeVilleModel.KindsOfActivity" Multiplicity="1" />
+          <End Role="Employees" Type="DeVilleModel.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KindsOfActivity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="ActivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OnlineApp__Servi__20C1E124">
+          <End Role="Services" Type="DeVilleModel.Service" Multiplicity="1" />
+          <End Role="OnlineAppointments" Type="DeVilleModel.OnlineAppointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OnlineAppointments">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Services__Catego__1273C1CD">
+          <End Role="ServiceCategories" Type="DeVilleModel.ServiceCategory" Multiplicity="1" />
+          <End Role="Services" Type="DeVilleModel.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Services">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Content" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="511" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="127" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="127" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="RoleId" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="DeVilleModel.FK__Users__RoleId__38996AB5" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="RoleName" Nullable="false" MaxLength="127" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CyrillicName" MaxLength="127" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="DeVilleModel.FK__Users__RoleId__38996AB5" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Users__RoleId__38996AB5">
+          <End Type="DeVilleModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="DeVilleModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="127" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ImgCover" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Products" Relationship="DeVilleModel.FK__Products__Catego__3D5E1FD2" FromRole="ProductCategory" ToRole="Product" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Products__Catego__3D5E1FD2">
+          <End Type="DeVilleModel.ProductCategory" Role="ProductCategory" Multiplicity="1" />
+          <End Type="DeVilleModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhotoAlbu__Galle__4222D4EF">
+          <End Type="DeVilleModel.PhotoGallery" Role="PhotoGallery" Multiplicity="1" />
+          <End Type="DeVilleModel.PhotoAlbum" Role="PhotoAlbum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhotoGallery">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhotoAlbum">
+              <PropertyRef Name="GalleryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Photos__AlbumId__4316F928">
+          <End Type="DeVilleModel.PhotoAlbum" Role="PhotoAlbum" Multiplicity="1" />
+          <End Type="DeVilleModel.Photo" Role="Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhotoAlbum">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Photo">
+              <PropertyRef Name="AlbumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ServiceSubcategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="127" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <NavigationProperty Name="ServiceCategory" Relationship="DeVilleModel.FK__ServiceSu__Categ__534D60F1" FromRole="ServiceSubcategory" ToRole="ServiceCategory" />
+          <NavigationProperty Name="Services" Relationship="DeVilleModel.FK__Services__Subcat__5441852A" FromRole="ServiceSubcategory" ToRole="Service" />
+        </EntityType>
+        <Association Name="FK__ServiceSu__Categ__534D60F1">
+          <End Type="DeVilleModel.ServiceCategory" Role="ServiceCategory" Multiplicity="1" />
+          <End Type="DeVilleModel.ServiceSubcategory" Role="ServiceSubcategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServiceSubcategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Services__Subcat__5441852A">
+          <End Type="DeVilleModel.ServiceSubcategory" Role="ServiceSubcategory" Multiplicity="0..1" />
+          <End Type="DeVilleModel.Service" Role="Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceSubcategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="SubcategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DeVilleModelStoreContainer" CdmEntityContainer="DeVilleEntities">
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="DeVilleModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KindsOfActivities">
+            <EntityTypeMapping TypeName="DeVilleModel.KindsOfActivity">
+              <MappingFragment StoreEntitySet="KindsOfActivity">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="DeVilleModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ImgCover" ColumnName="ImgCover" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OnlineAppointments">
+            <EntityTypeMapping TypeName="DeVilleModel.OnlineAppointment">
+              <MappingFragment StoreEntitySet="OnlineAppointments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Options">
+            <EntityTypeMapping TypeName="DeVilleModel.Option">
+              <MappingFragment StoreEntitySet="Options">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OptionName" ColumnName="OptionName" />
+                <ScalarProperty Name="OptionValue" ColumnName="OptionValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhotoAlbums">
+            <EntityTypeMapping TypeName="DeVilleModel.PhotoAlbum">
+              <MappingFragment StoreEntitySet="PhotoAlbum">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ImgCover" ColumnName="ImgCover" />
+                <ScalarProperty Name="GalleryId" ColumnName="GalleryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhotoGalleries">
+            <EntityTypeMapping TypeName="DeVilleModel.PhotoGallery">
+              <MappingFragment StoreEntitySet="PhotoGalleries">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ImgCover" ColumnName="ImgCover" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Photos">
+            <EntityTypeMapping TypeName="DeVilleModel.Photo">
+              <MappingFragment StoreEntitySet="Photos">
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AlbumId" ColumnName="AlbumId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="DeVilleModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="IsNovelty" ColumnName="IsNovelty" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImgCover" ColumnName="ImgCover" />
+                <ScalarProperty Name="Article" ColumnName="Article" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reviews">
+            <EntityTypeMapping TypeName="DeVilleModel.Review">
+              <MappingFragment StoreEntitySet="Reviews">
+                <ScalarProperty Name="AuthorPhoto" ColumnName="AuthorPhoto" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="AuthorFullName" ColumnName="AuthorFullName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceCategories">
+            <EntityTypeMapping TypeName="DeVilleModel.ServiceCategory">
+              <MappingFragment StoreEntitySet="ServiceCategories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImgCover" ColumnName="ImgCover" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="DeVilleModel.Service">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="SubcategoryId" ColumnName="SubcategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="VirtuosoPrice" ColumnName="VirtuosoPrice" />
+                <ScalarProperty Name="ExpertPrice" ColumnName="ExpertPrice" />
+                <ScalarProperty Name="HandymanPrice" ColumnName="HandymanPrice" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ImgCover" ColumnName="ImgCover" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vacancies">
+            <EntityTypeMapping TypeName="DeVilleModel.Vacancy">
+              <MappingFragment StoreEntitySet="Vacancies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImgCover" ColumnName="ImgCover" />
+                <ScalarProperty Name="Demands" ColumnName="Demands" />
+                <ScalarProperty Name="Duties" ColumnName="Duties" />
+                <ScalarProperty Name="Сondition" ColumnName="Сondition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="DeVilleModel.Post">
+              <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DeVilleModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="DeVilleModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="CyrillicName" ColumnName="CyrillicName" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCategories">
+            <EntityTypeMapping TypeName="DeVilleModel.ProductCategory">
+              <MappingFragment StoreEntitySet="ProductCategories">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ImgCover" ColumnName="ImgCover" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceSubcategories">
+            <EntityTypeMapping TypeName="DeVilleModel.ServiceSubcategory">
+              <MappingFragment StoreEntitySet="ServiceSubcategories">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

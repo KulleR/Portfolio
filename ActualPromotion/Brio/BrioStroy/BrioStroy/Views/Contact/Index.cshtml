@@ -1,0 +1,212 @@
+﻿@model Brio.Models.SendFeedback
+@{
+    ViewBag.Title = "КОНТАКТЫ";
+    Layout = "~/Views/Layouts/LayoutDefault.cshtml";
+}
+
+@section styles{
+    <style>
+        .page_logo {
+            background: url('../Content/images/contacts.png') no-repeat 0 0;
+            background-size: contain;
+        }
+    </style>
+}
+<link href="~/Content/css/idangerous.swiper.css" rel="stylesheet" />
+
+<div class="container run1">
+    <div data-id="0" class="slider">
+
+        <div class="units-nav-container">
+        </div>
+    </div>
+</div>
+<div class="page_logo_container">
+    <div class="page_logo"></div>
+</div>
+
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide block_ins">
+            <div class="title">
+                @ViewBag.Title
+            </div>
+            <article class="page-content">
+                <div class="articles">
+                    <div class="contact-container">
+                        <div class="adress">
+                            <address>
+                                Юридический адрес: 420043, Республика Татарстан, г. Казань, ул. Калинина д. 60, пом. 1041, Тел.: (843)277-96-51, (843)277-96-47
+                            </address>
+                            <!--<div class="adress1">                                 Юридический адрес: 420043,<br />                                 Республика Татарстан,<br />
+                                г. Казань, ул. Калинина
+                            </div>
+                            <div class="telephone">
+                                д. 60, пом. 1041, Тел.:<br />
+                                (843)277-96-51, (843)277-96-47
+                            </div>-->
+                        </div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2243.617781304661!2d49.14739460000001!3d55.782509900000015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x415ead0a78c21fa5%3A0x4f8776ec25b77746!2z0YPQuy4g0JrQsNC70LjQvdC40L3QsCwgNjAsINCa0LDQt9Cw0L3RjCwg0KDQtdGB0L8uINCi0LDRgtCw0YDRgdGC0LDQvSwgNDIwMDQz!5e0!3m2!1sru!2sru!4v1423231487202" height="220" frameborder="0" style="border: 0; width: 100%"></iframe>
+                    </div>
+                </div>
+                <div class="brio-tasks">
+                    @using (Html.BeginForm("SendFeedback", "Contact", FormMethod.Post, new { @class = "pure-form", enctype = "multipart/form-data" }))
+                    {
+                        <fieldset id="feedback_form" style="position: absolute; margin-left: 10%; width: 80%;">
+                            @Html.ValidationSummary(true)
+                            <div class="feedback_title">ОБРАТНАЯ СВЯЗЬ</div>
+                            @Html.TextBoxFor(model => model.Name, new { placeholder = "Имя" })
+                            @Html.TextBoxFor(model => model.Email, new { placeholder = "E-mail" })
+                            @Html.TextBoxFor(model => model.Phone, new { placeholder = "Телефон" })
+                            @Html.TextAreaFor(model => model.Message, 4, 22, new { placeholder = "Текст" })
+                            <button class="button-error pure-button feedback">ОТПРАВИТЬ</button>
+                        </fieldset>
+                    }
+                </div>
+            </article>
+        </div>
+
+        <div class="swiper-slide block_ins">
+            <div class="title">
+                @ViewBag.Title
+            </div>
+            <article class="page-content">
+                <div class="articles">
+                    <div class="contact-container">
+                        <div class="adress">
+                            <address>Фактический адрес: 129164, г. Москва ул. Маломосковская, д. 16, стр. 1</address>
+                            <!--<div class="adress1">
+                                Фактический адрес: 129164,<br />
+                                г. Москва
+                            </div>
+                            <div class="telephone">
+                                ул. Маломосковская, д. 16, стр. 1
+                            </div>-->
+                        </div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2241.8748528257765!2d37.647777999999995!3d55.812773!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b535dcfe89da29%3A0x7d0a122acbdd646c!2z0JzQsNC70L7QvNC-0YHQutC-0LLRgdC60LDRjyDRg9C7LiwgMTYsINCc0L7RgdC60LLQsCwgMTI5MTY0!5e0!3m2!1sru!2sru!4v1423231926455" height="220" frameborder="0" style="border: 0; width: 100%"></iframe>
+                    </div>
+                </div>
+                <div class="brio-tasks">
+                    @using (Html.BeginForm("SendFeedback", "Contact", FormMethod.Post, new { @class = "pure-form", enctype = "multipart/form-data" }))
+                    {
+                        <fieldset id="feedback_form" style="position: absolute; margin-left: 10%; width: 80%;">
+                            @Html.ValidationSummary(true)
+                            <div class="feedback_title">ОБРАТНАЯ СВЯЗЬ</div>
+                            @Html.TextBoxFor(model => model.Name, new { placeholder = "Имя" })
+                            @Html.TextBoxFor(model => model.Email, new { placeholder = "E-mail" })
+                            @Html.TextBoxFor(model => model.Phone, new { placeholder = "Телефон" })
+                            @Html.TextAreaFor(model => model.Message, 4, 22, new { placeholder = "Текст" })
+                            <button class="button-error pure-button feedback">ОТПРАВИТЬ</button>
+                        </fieldset>
+                    }
+                </div>
+            </article>
+        </div>
+
+        <div class="swiper-slide block_ins">
+            <div class="title">
+                @ViewBag.Title
+            </div>
+            <article class="page-content">
+                <div class="articles">
+                    <div class="contact-container">
+                        <div class="adress">
+                            <address>Почтовый адрес: 129164 г. Москва, а/я 181.</address>
+                            <!--<div class="adress1">
+                                Почтовый адрес: 129164
+                            </div>
+                            <div class="telephone">
+                                г. Москва, а/я 181.
+                            </div>-->
+                        </div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2243.71180635247!2d49.12733029999999!3d55.780877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x415ead060b262e81%3A0xb6377c7de20609c9!2z0KHQv9Cw0YDRgtCw0LrQvtCy0YHQutCw0Y8g0YPQuy4sIDIsINCa0LDQt9Cw0L3RjCwg0KDQtdGB0L8uINCi0LDRgtCw0YDRgdGC0LDQvSwgNDIwMTA3!5e0!3m2!1sru!2sru!4v1422019622106" height="220" frameborder="0" style="border: 0; width: 100%"></iframe>
+                    </div>
+                </div>
+                <div class="brio-tasks">
+                    @using (Html.BeginForm("SendFeedback", "Contact", FormMethod.Post, new { @class = "pure-form", enctype = "multipart/form-data" }))
+                    {
+                        <fieldset id="feedback_form" style="position: absolute; margin-left: 10%; width: 80%;">
+                            @Html.ValidationSummary(true)
+                            <div class="feedback_title">ОБРАТНАЯ СВЯЗЬ</div>
+                            @Html.TextBoxFor(model => model.Name, new { placeholder = "Имя" })
+                            @Html.TextBoxFor(model => model.Email, new { placeholder = "E-mail" })
+                            @Html.TextBoxFor(model => model.Phone, new { placeholder = "Телефон" })
+                            @Html.TextAreaFor(model => model.Message, 4, 22, new { placeholder = "Текст" })
+                            <button class="button-error pure-button feedback">ОТПРАВИТЬ</button>
+                        </fieldset>
+                    }
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/js/jquery-ui.min.js"></script>
+<script src="~/Content/js/idangerous.swiper.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".pure-button.feedback").bind("click", function (event) {
+            event.preventDefault();
+            var that = this;
+            var isDataValid = true;
+            var thatForm = $(that).parents("#feedback_form");
+            
+            thatForm.find("input, textarea").each(function () {
+                if ($(this).val() == "") {
+                    isDataValid = false;
+                    $(this).addClass("error");
+                }
+                else {
+                    $(this).removeClass("error");
+                }
+            });
+
+            if (!validateEmail($("input[name='Email']", thatForm).val())) {
+                isDataValid = false;
+                $("input[name='Email']", thatForm).addClass("error");
+            }
+            else {
+                $("input[name='Email']", thatForm).removeClass("error");
+            }
+
+            if (isDataValid) {
+                $(this).attr("disabled", true).text('ПОДОЖДИТЕ...');
+                setTimeout(function () {
+                    postFeedback($(that), thatForm);
+                }, 100);
+            }
+        });
+    });
+
+    function validateEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@@\"]+(\.[^<>()[\]\\.,;:\s@@\"]+)*)|(\".+\"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+    function postFeedback(feedbackButton, form) {
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: "/Contact/SendFeedback",
+            data: form.serialize(),
+            success: function (response) {
+                if (response.success) {
+                    form.find("input, textarea").each(function () {
+                        $(this).val("");
+                    });
+                }
+                feedbackButton.text(response.message);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log("request failed");
+            },
+            complete: function () {
+                setTimeout(function () {
+                    feedbackButton.attr("disabled", false).text("ОТПРАВИТЬ");
+                }, 3000);
+            },
+            processData: false,
+            async: true
+        });
+    }
+</script>

@@ -1,0 +1,13 @@
+﻿@model Deville.Models.Showcases.SendOnlineAppointment
+
+@using (Html.BeginForm("SendOnlineAppointment", "Contact", FormMethod.Post, new { id = "send-appointment" }))
+{
+    @Html.TextBoxFor(model => model.AuthorName, new { placeholder = Html.DisplayNameFor(model => model.AuthorName) })
+    <select id="ServiceId" name="ServiceId">
+        <option value="">- Выберите категорию -</option>
+    </select>
+    @Html.TextBoxFor(model => model.Phone, new { type = "tel", placeholder = Html.DisplayNameFor(model => model.Phone) })
+    @Html.TextBoxFor(model => model.Email, new { type = "email", placeholder = Html.DisplayNameFor(model => model.Email) })
+
+    <button class="pure-button submit">Отправить заявку</button>
+}

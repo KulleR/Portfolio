@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1CE1C1DE-6B20-4475-8A7E-7C8EA4AF95E5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Deville.EntityDataModel</RootNamespace>
+    <AssemblyName>Deville.EntityDataModel</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataContext\IDataContext.cs" />
+    <Compile Include="DeVilleEntityDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeVilleEntityDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeVilleEntityDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeVilleEntityDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeVilleEntityDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KindsOfActivity.cs">
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\IEntity.cs" />
+    <Compile Include="Models\Partials\News.cs" />
+    <Compile Include="Models\Partials\OnlineAppointment.cs" />
+    <Compile Include="Models\Partials\ServiceSubcategory.cs" />
+    <Compile Include="Models\Partials\Vacancy.cs" />
+    <Compile Include="Models\Partials\ProductCategory.cs" />
+    <Compile Include="Models\Partials\Photo.cs" />
+    <Compile Include="Models\Partials\DeVilleEntities.cs" />
+    <Compile Include="Models\Partials\PhotoAlbum.cs" />
+    <Compile Include="Models\Partials\PhotoGallery.cs" />
+    <Compile Include="Models\Partials\Product.cs" />
+    <Compile Include="Models\Partials\Review.cs" />
+    <Compile Include="Models\Partials\Service.cs" />
+    <Compile Include="Models\Partials\User.cs" />
+    <Compile Include="Models\Partials\ServiceCategory.cs" />
+    <Compile Include="News.cs">
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OnlineAppointment.cs">
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Option.cs">
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Photo.cs">
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhotoAlbum.cs">
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhotoGallery.cs">
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Post.cs">
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductCategory.cs">
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Review.cs">
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service.cs">
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceCategory.cs">
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceSubcategory.cs">
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vacancy.cs">
+      <DependentUpon>DeVilleEntityDataModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="DeVilleEntityDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DeVilleEntityDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="DeVilleEntityDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DeVilleEntityDataModel.edmx</DependentUpon>
+      <LastGenOutput>DeVilleEntityDataModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DeVilleEntityDataModel.edmx.diagram">
+      <DependentUpon>DeVilleEntityDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="DeVilleEntityDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DeVilleEntityDataModel.edmx</DependentUpon>
+      <LastGenOutput>DeVilleEntityDataModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Deville.Models.csproj">
+      <Project>{96586f45-55f8-48cd-b8a3-c4b89bee4041}</Project>
+      <Name>Deville.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

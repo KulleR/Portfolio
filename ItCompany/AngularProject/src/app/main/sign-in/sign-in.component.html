@@ -1,0 +1,43 @@
+<div class="login-box">
+  <div class="login-box-body">
+    <div class="signin-logo">
+      <img src="/src/assets/img/voca_logo_white.png">
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage"> {{errorMessage}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="errorMessage = ''">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="alert alert-success" role="alert" *ngIf="successMessage">
+      <span [innerHtml]="successMessage"></span>
+    </div>
+    <form [formGroup]="signinForm" (ngSubmit)="OnSubmit(signinForm)">
+      <div class="form-group has-feedback" [ngClass]="displayFieldGroupValidationClass('username')">
+        <input type="text" formControlName="username" class="form-control sty1" placeholder="Email" [ngClass]="displayFieldValidationClass('username')">
+        <app-show-input-errors [control]="signinForm.controls.username"></app-show-input-errors>  
+      </div>
+      <div class="form-group has-feedback" [ngClass]="displayFieldGroupValidationClass('password')">
+        <input type="password" formControlName="password" class="form-control sty1" placeholder="Password" [ngClass]="displayFieldValidationClass('password')">
+        <app-show-input-errors [control]="signinForm.controls.password"></app-show-input-errors>
+      </div>
+      <div>
+        <!-- /.col -->
+        <div class="row">
+        <div class="col-6 m-t-1">
+          <button type="submit" class="btn btn-primary btn-block btn-flat" [disabled]="isShowLoader">
+            <span *ngIf="this.isShowLoader; else primaryBlock"><i class="fa fa-spinner fa-spin"></i> Sign In . . .</span> 
+            <ng-template #primaryBlock>Sign In</ng-template>
+          </button>
+        </div>
+        <div class="col-6 m-t-1">
+          <button class="btn btn-success btn-block btn-flat" [routerLink]="['/signup']">
+            Sign Up - It's free. 
+          </button>
+        </div>
+      </div>
+        <!-- /.col -->
+      </div>
+    </form>
+  </div>
+  <!-- /.login-box-body -->
+</div>

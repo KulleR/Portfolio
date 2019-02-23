@@ -1,0 +1,51 @@
+﻿@using Deville.EntityDataModel
+@model IEnumerable<PhotoGallery>
+
+@{
+    ViewBag.Title = "Фотогалерея";
+    Layout = "~/Views/Layouts/DefaultLayouts.cshtml";
+}
+
+@section styles {
+    <style>
+        .main-content .top {
+            background-image: url('/content/img/banner_gallery.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 300px;
+        }
+    </style>
+}
+
+<section class="top">
+    <!-- There located top bckg image, which different in other pages -->
+    <header class="capital-letter-pink">
+        @ViewBag.Title
+    </header>
+</section>
+<section class="content photo-gallery b-container">
+    @if (Model.Count() > 0)
+    {
+        <div class="pure-g">
+            @{int i = 0;}
+            @foreach (PhotoGallery pg in Model)
+            {
+                i++;
+                <div class="pure-u-1-3 b-wrap">
+                    <a href="@Url.Action("Index", "PhotoAlbum", new { galleryId = pg.Id })" class="thumbnail">
+                        <div class="b-img">
+                            <img class="pure-img" src="@pg.ImgCover" alt="@Html.NameFor(model => pg.ImgCover)" title="@pg.Name" />
+                        </div>
+                        <div class="b-title @(i % 2 == 0 ? "pink" : "")">
+                            @pg.Name
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        @: Галлерей нет.
+    }
+</section>

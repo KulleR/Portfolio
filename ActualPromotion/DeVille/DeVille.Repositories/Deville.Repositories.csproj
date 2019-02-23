@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7E142244-FE87-43C3-9853-1AE2ED0494FF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Deville.Repositories</RootNamespace>
+    <AssemblyName>Deville.Repositories</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Implementations\ServiceSubcategoryRepository.cs" />
+    <Compile Include="Implementations\NewsRepository.cs" />
+    <Compile Include="Implementations\OnlineAppointmentRepository.cs" />
+    <Compile Include="Implementations\VacancyRepository.cs" />
+    <Compile Include="Implementations\ProductCategoryRepository.cs" />
+    <Compile Include="Implementations\PhotoGalleryRepository.cs" />
+    <Compile Include="Implementations\PhotoAlbumRepository.cs" />
+    <Compile Include="Implementations\PhotoRepository.cs" />
+    <Compile Include="Implementations\ProductRepository.cs" />
+    <Compile Include="Implementations\ReviewRepository.cs" />
+    <Compile Include="Implementations\ServiceRepository.cs" />
+    <Compile Include="Implementations\Repository.cs" />
+    <Compile Include="Implementations\ServiceCategoryRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Implementations\UserRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Interfaces\IServiceSubcategoryRepository.cs" />
+    <Compile Include="Interfaces\INewsRepository.cs" />
+    <Compile Include="Interfaces\IOnlineAppointmentRepository.cs" />
+    <Compile Include="Interfaces\IVacancyRepository.cs" />
+    <Compile Include="Interfaces\IReviewRepository.cs" />
+    <Compile Include="Interfaces\IProductCategoryRepository.cs" />
+    <Compile Include="Interfaces\IPhotoRepository.cs" />
+    <Compile Include="Interfaces\IPhotoGalleryRepository.cs" />
+    <Compile Include="Interfaces\IPhotoAlbumRepository.cs" />
+    <Compile Include="Interfaces\IProductRepository.cs" />
+    <Compile Include="Interfaces\IServiceRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IServiceCategoryRepository.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntityFramework\Deville.EntityDataModel.csproj">
+      <Project>{1ce1c1de-6b20-4475-8a7e-7c8ea4af95e5}</Project>
+      <Name>Deville.EntityDataModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

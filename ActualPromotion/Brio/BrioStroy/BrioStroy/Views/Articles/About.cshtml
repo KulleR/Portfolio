@@ -1,0 +1,165 @@
+﻿@model IEnumerable<Brio.Models.Article>
+@{
+    ViewBag.Title = "О КОМПАНИИ";
+    Layout = "~/Views/Layouts/LayoutDefault.cshtml";
+}
+
+@section styles{
+    <style>
+        .page_logo {
+            background: url('../Content/images/about_company.png') no-repeat 0 0;
+            background-size: contain;
+        }
+    </style>
+}
+<link href="~/Content/css/idangerous.swiper.css" rel="stylesheet" />
+
+<div class="container run1">
+    <div data-id="0" class="slider">
+        <div class="units-nav-container">
+        </div>
+    </div>
+</div>
+
+<div class="page_logo_container">
+    <div class="page_logo"></div>
+</div>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        @foreach (var item in Model)
+        {
+            <div class='swiper-slide about block_ins'>
+                <div class="title">
+                    @ViewBag.Title
+                </div>
+                <article class="page-content">
+                    <div class="articles">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="add_button admin_buttons">@Html.ActionLink("Добавить запись", "Add")</div>
+                        }
+
+                        <div class="article_container">
+                            <div class="article_header">
+                                <h1>@item.Title</h1>
+                            </div>
+                            <div class="article">@Html.Raw(HttpUtility.HtmlDecode(item.Text))</div>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <div class="delete_button admin_buttons">
+                                    <a href="/Articles/Edit?articleId=@item.ID"><i class=" fa fa-pencil-square-o"></i></a>
+                                    <a class="delete" href="" data-articleid="@item.ID"><i class="fa fa-times"></i></a>
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                    <div class="brio-tasks">
+                        @if (item.ArticleAside != null)
+                        {
+                            <aside>
+                                <header>@item.ArticleAside.Title</header>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <div class="delete_button admin_buttons">
+                                        <a href="/Articles/DeleteAside?articleId=@item.ID"><i class="fa fa-times"></i></a>
+                                    </div>
+                                }
+                                <section>@item.ArticleAside.Text</section>
+                            </aside>
+                        }
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="add_button_bot review_but"><a href="/Articles/EditAside?articleId=@item.ID">Редактировать правую панель</a></div>
+                        }
+                        <div class="bottom-corner"></div>
+                    </div>
+                </article>
+            </div>
+            <div style="clear: both;"></div>
+        }
+
+        @if (Model.Count() == 0)
+        {
+            <div class='swiper-slide about block_ins'>
+                <div class="title">
+                    @ViewBag.Title
+                </div>
+                <article class="page-content">
+                    <div class="articles">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="add_button admin_buttons">@Html.ActionLink("Добавить запись", "Add")</div>
+                        }
+                        <div class="empty_list">На данный момент не добавлено ни одной записи</div>
+                    </div>
+                    <div class="brio-tasks">
+                        <div class="bottom-corner"></div>
+                    </div>
+                </article>
+            </div>
+        }
+
+        <div class='swiper-slide about block_ins rhombus items-7'>
+            <div class="logo_cont">
+                <div class="partner_logo rosjeldor"></div>
+                <div class="partner_logo panel"></div>
+                <div class="partner_logo kungur"></div>
+                <div class="partner_logo malan"></div>
+            </div>
+            <div class="logo_cont line2">
+                <div class="logo_inner_cont">
+                    <div class="partner_logo dolina"></div>
+                    <div class="partner_logo elvis"></div>
+                    <div class="partner_logo vashbit"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bottom_arrows_container">
+    <div class="bottom-arrows">
+    </div>
+</div>
+
+<script src="~/Content/js/jquery-ui.min.js"></script>
+<script src="~/Content/js/idangerous.swiper.js"></script>
+<script>
+    (function () {
+
+        $(".delete").bind("click", function (e) {
+            console.log("123");
+            e.preventDefault();
+            var that = this;
+
+            if (!confirm("Вы действительно хотите удалить эту запись?")) {
+                return false;
+            }
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: "/Articles/Delete",
+                data: "id=" + $(that).attr("data-articleid"),
+                success: function (response) {
+                    if (response.success) {
+                        removeBlock(350, function () {
+                            console.log("success");
+                        });
+                    }
+                    else {
+                        console.log(response.message);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log("request failed");
+                },
+
+                processData: false,
+                async: false
+            });
+        });
+    })();
+</script>

@@ -1,0 +1,49 @@
+﻿@using Deville.EntityDataModel
+@model IEnumerable<News>
+@{
+    ViewBag.Title = "Новости";
+    Layout = "~/Areas/Admin/Views/Layouts/AdminDefaultLayouts.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Список новостей</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        @if (Model.Count() > 0)
+        {
+            foreach (News n in Model)
+            {
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="thumbnail">
+                    <a href="@Url.Action("View", "News", new { id = n.Id })">
+                        <img src="@n.ImgCover" alt="@Html.DisplayNameFor(model => model.ImgCover)"></a>
+                    <div class="caption">
+                        <a href="@Url.Action("View", "News", new { id = n.Id })">
+                            <h3>@n.Title</h3>
+                        </a>
+                        <p>@n.Text.Substring(0, n.Text.Length > 150 ? 150 : n.Text.Length)</p>
+                        <p>@Html.ActionLink("Редактировать", "Edit", new { id = n.Id }, new { @class = "btn btn-primary", role = "button" })
+                           @Html.ActionLink("Удалить", "Delete", new { id = n.Id }, new { @class = "btn btn-default", role = "button", onclick = "return confirm('Удалить галлерею?')" })
+                        </p>
+                    </div>
+                </div>
+            </div>
+            }
+
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                Ни одной новости не существует.
+            </div>
+        }
+    </div>
+</div>
+<div class="col-sm-offset-4 col-sm-4">
+    @Html.ActionLink("Добавить", "Add", new { }, new { @class = "btn btn-primary btn-lg btn-block" })
+</div>

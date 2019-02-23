@@ -1,0 +1,329 @@
+﻿@using System.Web.Optimization
+@using MvcBundleConfig.Extensions
+@using Deville.Helpers.Extensions
+@using Deville.Models.Showcases
+@using Deville.EntityDataModel
+@using Deville.Repositories
+@{
+    Html.TrySetOptimizationEnabled();
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="shortcut icon" type="image/png" href="@Url.Content("/content/img/favicon.ico")"/>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/content/css")
+    @RenderSection("styles", required: false)
+</head>
+<body>
+    <div class="page-wraper">
+        <header class="header">
+            <h1 class="header-logo">
+                <a href="/">DeVille</a>
+            </h1>
+
+            <div class="right-block">
+                <address>
+                    <div class="phone">
+                        8(843)238-67-67, 8(987)297-42-22
+                    </div>
+                    <div class="address">
+                        г. Казань, Салимжанова, 17
+                    </div>
+                </address>
+                <div class="search">
+                    <form action="/" class="serch-form">
+                        <input class="serch-text" name="query" type="text" />
+                        <input class="serch-submit" type="submit" value="" />
+                    </form>
+                </div>
+            </div>
+        </header>
+        <!-- Main menu [ -->
+        <nav class="main-menu">
+            <div class="visible">
+                <ul class="nav-inner">
+                    <li>
+                        @Html.ActionLink("Услуги", "Index", "Home", new { }, new { @class = @Html.IsSelected(new string[] { "Home" }) })
+                    </li>
+                    <li>
+                        <a class="@Html.IsSelected(new string[] { "ProductCategory", "Product" })" href="@Url.Action("Index", "ProductCategory")">Профессиональная косметика</a>
+                    </li>
+                    <li>
+                        @Html.ActionLink("Фотогалерея", "Index", "PhotoGallery", new { }, new { @class = Html.IsSelected(new string[] { "PhotoGallery", "PhotoAlbum" }) })
+                    </li>
+                    <li>
+                        @Html.ActionLink("О нас", "About", "Page", new { }, new { @class = Html.IsSelected(new string[] { "Page", "Review", "News" }) })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Контакты", "Index", "Contact", new { }, new { @class = Html.IsSelected(new string[] { "Contact", "Vacancy" }) })
+                    </li>
+                    <li class="button-cont">
+                        <button class="pure-button o-button">Запись Online</button>
+                        <div class="enroll-form">
+                            <div class="title">Запись Online</div>
+                            @Html.Partial("OnlineAppointmentForm", new SendOnlineAppointment())
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="hidden">
+                <ul class="nav-inner">
+                    <li>
+                        @Html.ActionLink("Прайсы", "PriceLists", "ServiceCategory")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Новинки", "GetNovelty", "Product")
+                    </li>
+                    <li>
+                        @{
+                            IPhotoGalleryRepository photoGalleryRepositories = DependencyResolver.Current.GetService(typeof(IPhotoGalleryRepository)) as IPhotoGalleryRepository;
+                            IEnumerable<PhotoGallery> photoGalleries = photoGalleryRepositories.GetAll();
+                        }
+                        @foreach (PhotoGallery pg in photoGalleries)
+                        {
+                            @Html.ActionLink(pg.Name, "Index", "PhotoAlbum", new { galleryId = pg.Id }, new { })
+                        }
+                    </li>
+                    <li>
+                        <a href="#">Пресса</a>
+                        @Html.ActionLink("Новости", "Index", "News")
+                        @Html.ActionLink("Отзывы", "Index", "Review")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Вакансии", "Index", "Vacancy")
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- ] Main menu -->
+        <!-- Content [ -->
+        <div class="main-content">
+            @RenderBody()
+        </div>
+        <!-- ] Content -->
+        <!-- Footer [ -->
+        <footer class="footer">
+            <!-- Top block of footer [ -->
+            <section class="top pure-g">
+                <div class="pure-u-1-5">
+                    <ul class="nav">
+                        <li class="capital-letter-pink">
+                            @Html.ActionLink("Услуги", "Index", "Home")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Прайсы", "PriceLists", "ServiceCategory")
+                        </li>
+                    </ul>
+                </div>
+                <div class="pure-u-1-5">
+                    <ul class="nav">
+                        <li class="capital-letter-pink">
+                            @Html.ActionLink("Beauty Shop", "Index", "ProductCategory")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Новинки", "GetNovelty", "Product")
+                        </li>
+                    </ul>
+                </div>
+                <div class="pure-u-1-5">
+                    <ul class="nav">
+                        <li class="capital-letter-pink">
+                            @Html.ActionLink("Фотогалерея", "Index", "PhotoGallery")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Фото салона", "Index", "PhotoAlbum", new { galleryId = 1 }, new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("Сотрудники", "Index", "PhotoAlbum", new { galleryId = 2 }, new { })
+                        </li>
+                        <li>
+                            @Html.ActionLink("Наши работы", "Index", "PhotoAlbum", new { galleryId = 3 }, new { })
+                        </li>
+                    </ul>
+                </div>
+                <div class="pure-u-1-5">
+                    <ul class="nav">
+                        <li class="capital-letter-pink">
+                            @Html.ActionLink("Вакансии", "Index", "Vacancy")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Контакты", "Index", "Contact")
+                        </li>
+                    </ul>
+                </div>
+                <div class="pure-u-1-5">
+                    <ul class="nav">
+                        <li class="capital-letter-pink">
+                            <a href="#">О нас</a>
+                        </li>
+                        <li>
+                            <a href="#">Пресса</a>
+                        </li>
+                        <li>
+                            @Html.ActionLink("Новинки", "GetNovelty", "Product")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Отзывы", "Index", "Review")
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <!-- ] Top block of footer -->
+            <!-- Bottom block of footer [ -->
+            <section class="bottom">
+                <div class="social-but">
+                    <!-- Social buttons -->
+                    <a href="#">
+                        <img src="/content/img/instagram_icon.png" title="Наша страница в инстаграмме" /></a>
+                    <a href="#">
+                        <img src="/content/img/vk_icon.png" title="Наша страница вконтакте" /></a>
+                </div>
+                <div class="web-studio">Создание сайта - "<a href="http://actpr.ru" title="Агенство интернет-решений" target="_blank">Актуальное Продвижение</a>"</div>
+            </section>
+            <!-- ] Bottom block of footer -->
+        </footer>
+        <!-- ] Footer -->
+    </div>
+
+    @Scripts.Render("~/scripts/jquery")
+    @Scripts.Render("~/scripts/jquery-ui")
+    @Scripts.Render("~/scripts/common")
+
+    <script>
+        (function () {
+            var form = $('#send-appointment'),
+                submitButton = $('button.submit'),
+                isDataValid = true,
+                emailInput = $("input[name='Email']", form);
+
+            function getServiceCategories(callback) {
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: "/ServiceCategory/GetAll",
+                    success: function (response) {
+                        callback(response);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        console.log("request failed");
+                    },
+                    complete: function () {
+                    },
+                    processData: false,
+                    async: true
+                });
+            }
+
+            function sendAppointmentForm(successFunc, errorFunc, completeFunc) {
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: "/Contact/SendOnlineAppointment",
+                    data: form.serialize(),
+                    success: function (response) {
+                        if (response.success) {
+                            successFunc(response.message);
+                        }
+                        else {
+                            errorFunc(response.message);
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        console.log("request failed");
+                    },
+                    complete: function () {
+                        completeFunc();
+                    },
+                    processData: false,
+                    async: true
+                });
+            }
+
+            function validateEmail(email) {
+                var re = /^(([^<>()[\]\\.,;:\s@@\"]+(\.[^<>()[\]\\.,;:\s@@\"]+)*)|(\".+\"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+
+            getServiceCategories(function (categories) {
+                for (var i = 0; i < categories.length; i++) {
+                    $('#ServiceId')
+                     .append($("<option></option>")
+                     .attr("value", categories[i].Id)
+                     .text(categories[i].Name));
+                }
+            });
+
+            form.submit(function () {
+                event.preventDefault();
+                form.find("input, textarea, select").each(function () {
+                    var that = this;
+                    if ($(that).val() == "") {
+                        isDataValid = false;
+                        $(that).removeClass("error")
+                        setTimeout(function () {
+                            $(that).addClass("error");
+                        }, 100);
+                    }
+                    else {
+                        isDataValid = true;
+                        $(that).removeClass("error");
+                    }
+                });
+
+                if (!validateEmail($("input[name='Email']", form).val())) {
+                    isDataValid = false;
+                    emailInput.removeClass("error");
+                    setTimeout(function () {
+                        emailInput.addClass("error");
+                    }, 100);
+                }
+                else {
+                    isDataValid = true;
+                    emailInput.removeClass("error");
+                }
+
+                if (isDataValid) {
+                    submitButton.attr("disabled", true).text('ПОДОЖДИТЕ...');
+                    setTimeout(function () {
+                        sendAppointmentForm(function (successMessage) { // Если успешно
+                            form.find("input, textarea").each(function () {
+                                $(this).val("");
+                            });
+                            submitButton.text(successMessage);
+                            setTimeout(function () {
+                                $('.enroll-form').toggle("slide", { direction: "up" }, 1000);
+                            }, 3000);
+                        }, function (errorMessage) { // Если не успешно
+                            submitButton.text(errorMessage);
+                        }, function () { // По завершению
+                            setTimeout(function () {
+                                submitButton.attr("disabled", false).text('Отправить заявку');
+                            }, 3000);
+                        });
+                    }, 100);
+                }
+            });
+        })();
+    </script>
+    <!-- Google Analytics -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-59851063-30', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <!-- /Google Analytics -->
+    @RenderSection("scripts", required: false)
+</body>
+</html>

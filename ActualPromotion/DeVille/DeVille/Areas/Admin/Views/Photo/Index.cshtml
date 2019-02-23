@@ -1,0 +1,55 @@
+﻿@using System.Web.Optimization
+@using Deville.EntityDataModel
+@model IEnumerable<Photo>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Layouts/AdminDefaultLayouts.cshtml";
+}
+
+@section styles{
+    @Styles.Render("~/content/prettyPhoto")
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Фотографии</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <ol class="breadcrumb">
+          <li><a href="@Url.Action("Index", "PhotoAlbum", new { galleryId = (ViewBag.Gallery as PhotoGallery).Id })">@((ViewBag.Gallery as PhotoGallery).Name)</a></li>
+          <li class="active">@((ViewBag.Album as PhotoAlbum).Name)</li>
+        </ol>
+    @if (Model.Count() > 0)
+    {
+        foreach (Photo ph in Model)
+        {
+        <div class="col-xs-6 col-md-3 col-lg-2">
+            <a href="@ph.ImgUrl" rel="prettyPhoto[photos]" class="thumbnail">
+                <img src="@ph.ImgUrl" alt="@Html.DisplayNameFor(model => model.ImgUrl)" title="@ph.Name">
+            </a>
+            @Html.ActionLink("Удалить", "Delete", new { id = ph.Id }, new { @class = "btn btn-danger btn-block" })
+        </div>
+        }
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            Ни одной фотографии не существует.
+        </div>
+    }
+</div>
+<div class="col-sm-offset-4 col-sm-4">
+    @Html.ActionLink("Добавить", "Add", new { albumId = (ViewBag.Album as PhotoAlbum).Id }, new { @class = "btn btn-primary btn-lg btn-block" })
+</div>
+
+@section scripts {
+    @Scripts.Render("~/scripts/prettyPhoto")
+<script>
+        $("a[rel^='prettyPhoto']").prettyPhoto({
+            social_tools: false
+        });
+    </script>
+}

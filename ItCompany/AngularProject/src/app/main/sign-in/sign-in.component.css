@@ -1,0 +1,26 @@
+.login-box .login-box-body {
+    background: linear-gradient(135deg, #B277FD, #7EBEF5);
+}
+
+.login-box input {
+    border-radius: 20px;
+    text-indent: 15px;
+}
+
+.login-box input::-webkit-input-placeholder { color: #D0D0D0;}
+.login-box input:-ms-input-placeholder { color: #D0D0D0; }
+.login-box input::-ms-input-placeholder { color: #D0D0D0; }
+.login-box input::placeholder { color: #D0D0D0; } 
+
+.login-box button {
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+.signin-logo {
+    padding: 15px 40px 35px;
+}
+
+.signin-logo img {
+    width: 100%;
+}

@@ -1,0 +1,90 @@
+<div class="d-flex justify-content-between bd-highlight mb-3 content-header sty-one">
+  <div class="company-logo">
+    <img src="/src/assets/img/voca_logo_white.png">
+  </div>
+</div>
+
+<div class="content">
+  <div *ngIf="isRecognitionSupported; else notSupportMessageBlock">
+      <div class="d-flex justify-content-between bd-highlight sty-one">
+        <div></div>
+        <div class="microphone-activity" [ngClass]="{'speaking': isMicDetected}">
+          <!-- <i class="fa fa-microphone fa-2x align-middle"></i> -->
+        </div>
+        <div>
+          <span class="align-middle" *ngIf="userService.currentUser">{{userService.currentUser.email}}</span>
+          <button class="btn btn-link" (click)="logout()">Logout</button>
+        </div>
+    </div>
+
+    <div class="row card-container" [sortablejs]="blocks" [sortablejsOptions]="sortableOptions">
+      <div class="col-sm-3 col-lg-2 py-2" *ngFor="let b of blocks">
+        <div class="card card-body h-100 script-block" [ngClass]="getBlockColorClasses(b)">
+          <div class="d-flex justify-content-between card-body c-pointer">
+            <h3>{{b.header}}</h3>
+            <h3>{{b.recognizedCount}}</h3>
+          </div>
+          <div class="on-hover-block c-pointer" (click)="onCardClick(b)">
+              <div class="hover-background-color"></div>
+              <i class="fa fa-pencil fa-2x fa-inverse edit" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 col-lg-2 py-2">
+        <div class="card card-body h-100">
+          <div class="card-body text-center c-pointer" [routerLink]="['/createblock']">
+            <span class="fa fa-plus fa-2x"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row texts-container">
+      <div class="col-lg-12 py-2">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let b of blocks">
+            <div class="list-block-header">
+              {{b.header}}
+            </div>
+            <div class="list-block-content" [innerHtml]="b.text"></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 py-2">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let s of recognitionHistory.getSessions">
+            <span class="dialog-time">{{s.StartDate | date:"shortTime"}}: </span>
+            <span class="badge badge-pill" [ngClass]="getBadgeColorClasses(recognitionResult)" *ngFor="let recognitionResult of s.Recognitions">{{recognitionResult.Block.header}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="card-info" class="modal" tabindex="-1" role="dialog" *ngIf="selectedBlock">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="block-header" class="modal-title mr-2" contenteditable="true">{{selectedBlock.header}}</h5>
+        <a href="#" class="edit-activate-link">Edit</a>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="block-text" contenteditable="true" innerHtml="{{selectedBlock.text}}"></p>
+        <a href="#" class="edit-activate-link">Edit</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger mr-auto" (click)="deleteBlock(selectedBlock)">Delete</button>
+        <button id="save-card" type="button" class="btn btn-success" (click)="saveBlock()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #notSupportMessageBlock>
+  <div>Ваш браузер не поддерживает распознавание.</div>
+</ng-template>

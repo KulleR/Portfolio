@@ -1,0 +1,53 @@
+﻿@using Deville.EntityDataModel
+@model IEnumerable<Review>
+
+@{
+    ViewBag.Title = "Отзывы";
+    Layout = "~/Views/Layouts/DefaultLayouts.cshtml";
+}
+
+@section styles {
+    <style>
+        .main-content .top {
+            background-image: url('/content/img/banner1.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 300px;
+        }
+    </style>
+}
+
+<section class="top">
+    <!-- There located top bckg image, which different in other pages -->
+    <header class="capital-letter-pink">
+        <div>Окунись в мир</div>
+        <div>красоты и комфорта...</div>
+    </header>
+</section>
+<section class="content reviews">
+    @if (Model.Count() > 0)
+    {
+        <div class="pure-g">
+            @foreach (Review r in Model)
+            {
+                <div class="pure-u-1-3 wrap">
+                    <div class="container">
+                        <div class="img">
+                            <img class="pure-img" src="@r.AuthorPhoto" alt="@Html.DisplayFor(model => r.AuthorPhoto)" title="@Html.DisplayFor(model => r.AuthorFullName)" />
+                        </div>
+                        <div class="r-content">
+                            <div class="name capital-letter-pink">@r.AuthorFullName</div>
+                            <div class="message">@r.Message</div>
+                            <div class="date">@r.CreateDate</div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        @: Отзывов нет.
+    }
+
+</section>

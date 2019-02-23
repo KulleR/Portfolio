@@ -1,0 +1,5 @@
+<div *ngIf="shouldShowErrors()">
+  <span class="help-block" *ngFor="let error of listOfErrors()">
+    {{error}}
+  </span>
+</div>

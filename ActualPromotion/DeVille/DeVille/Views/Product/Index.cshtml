@@ -1,0 +1,67 @@
+﻿@using System.Web.Optimization
+@using Deville.EntityDataModel
+
+@model IEnumerable<Product>
+
+@{
+    ViewBag.Title = (ViewBag.Category as ProductCategory).Title;
+    Layout = "~/Views/Layouts/DefaultLayouts.cshtml";
+}
+
+@section styles {
+    @Styles.Render("~/content/prettyPhoto")
+    <style>
+        .main-content .top {
+            background-image: url('/content/img/nail_banner.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 300px;
+        }
+    </style>
+}
+
+<section class="top">
+    <!-- There located top bckg image, which different in other pages -->
+    <header class="capital-letter-pink">
+        @ViewBag.Title
+    </header>
+</section>
+<section class="content b-container">
+    @if (Model.Count() > 0)
+    {
+        <div class="pure-g">
+            @{int i = 0;}
+            @foreach (Product p in Model)
+            {
+                i++;
+                <!-- Block wrapper -->
+                <div class="pure-u-1-3 b-wrap">
+                    <a href="@p.ImgCover" rel="prettyPhoto[products]" class="thumbnail" title="@p.Description. <br />Цена: @Html.DisplayFor(model => p.Price). <br />Артикул: @Html.DisplayFor(model => p.Article)">
+                        <!-- Img container -->
+                        <div class="b-img">
+                            <img class="pure-img" src="@p.ImgCover" alt="@p.Title" />
+                        </div>
+                        <!-- Bottom title -->
+                        <div class="b-title @(i % 2 == 0 ? "pink" : "")">
+                            @p.Title
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        @: Нет ни одного продукта.
+    }
+</section>
+
+@section scripts {
+    @Scripts.Render("~/scripts/prettyPhoto")
+    <script>
+        $("a[rel^='prettyPhoto']").prettyPhoto({
+            show_title: true,
+            social_tools: false
+        });
+    </script>
+}

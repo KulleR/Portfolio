@@ -1,0 +1,36 @@
+﻿<ng-progress [color]="'blue'" [showSpinner]="false"></ng-progress>
+
+<div *ngIf="ecode" class="card m-2">
+    <div class="card-body">
+        <div class="row align-items-center">
+            <div class="col-8 col-lg-10">
+                <h5 class="card-title">{{ecode.ingredients}}</h5>
+            </div>
+            <div class="col-4 col-lg-2 text-right h4">
+                <span class="badge" [ngClass]="
+                      {'badge-success': ecode.status == 0,
+                      'badge-danger': ecode.status == 1,
+                      'badge-warning': ecode.status == 2,
+                      'badge-secondary': ecode.status == 3}">
+                    {{ ecode.code }}
+                </span>
+            </div>
+        </div>
+
+        <h6 class="card-subtitle mb-2 text-muted">{{ecode.category}}</h6>
+        <p class="card-text">{{ecode.statusDesc}}</p>
+        <p class="card-text">
+            <span class="flag flag-eu" alt="EU"></span> - 
+            <span *ngIf="ecode.euApprouved">Approved</span>
+            <span *ngIf="!ecode.euApprouved">Banned</span>
+            <span>in the EU</span>
+        </p>
+        <p class="card-text">
+            <span class="flag flag-us" alt="US"></span> - 
+            <span *ngIf="ecode.usApprouved">Approved</span>
+            <span *ngIf="!ecode.usApprouved">Banned</span>
+            <span>in the US</span>
+        </p>
+        <a [routerLink]="['/ecodes']" class="card-link">Назад</a>
+    </div>
+</div>

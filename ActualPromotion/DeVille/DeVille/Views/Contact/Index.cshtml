@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Контакты";
+    Layout = "~/Views/Layouts/DefaultLayouts.cshtml";
+}
+
+@section styles {
+    <style>
+        .main-content .top {
+            background-image: url('/content/img/banner_contacts.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 300px;
+        }
+    </style>
+}
+
+<section class="top">
+    <!-- There located top bckg image, which different in other pages -->
+    <header class="capital-letter-pink">
+        Контакты
+    </header>
+</section>
+<section class="content">
+    <div class="v-block pure-g">
+        <div class="pure-u-3-5">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2243.986575457891!2d49.13379900000001!3d55.77610500000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x415eada831da3279%3A0x6a16d969d746b1b9!2z0YPQuy4g0JzQsNGA0YHQtdC70Y8g0KHQsNC70LjQvNC20LDQvdC-0LLQsCwgMTcsINCa0LDQt9Cw0L3RjCwg0KDQtdGB0L8uINCi0LDRgtCw0YDRgdGC0LDQvSwgNDIwMTA3!5e0!3m2!1sru!2sru!4v1419835829328" frameborder="0" style="border: 0"></iframe>
+        </div>
+        <div class="pure-u-2-5">
+            <div class="v-description">
+                <h2 class="capital-letter-pink">Контакты
+                </h2>
+                <p>Салон красоты Девиль</p>
+                <p>Время работы: с 09:00 до 20:00</p>
+
+                <p>Телефон:   +7 (843) 238-67-67</p>
+
+                <p>Адрес: Казань, ул. Марселя Салимжанова, 17</p>
+            </div>
+        </div>
+    </div>
+</section>

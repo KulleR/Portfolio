@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{96586F45-55F8-48CD-B8A3-C4B89BEE4041}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Deville.Models</RootNamespace>
+    <AssemblyName>Deville.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MetaData\News\AddNewsMetaData.cs" />
+    <Compile Include="MetaData\News\NewsMetaData.cs" />
+    <Compile Include="MetaData\OnlineAppointment\OnlineAppointmentMetaData.cs" />
+    <Compile Include="MetaData\PhotoAlbum\PhotoAlbumMetaData.cs" />
+    <Compile Include="MetaData\PhotoGallery\PhotoGalleryMetaData.cs" />
+    <Compile Include="MetaData\Photo\PhotoAlbumMetaData.cs" />
+    <Compile Include="MetaData\Product\ProductCategoryMetaData.cs" />
+    <Compile Include="MetaData\Product\ProductMetaData.cs" />
+    <Compile Include="MetaData\Review\ReviewMetaData.cs" />
+    <Compile Include="MetaData\Service\ServiceSubcategoryMetaData.cs" />
+    <Compile Include="MetaData\Service\ServiceCategoryMetaData.cs" />
+    <Compile Include="MetaData\Service\ServiceMetaData.cs" />
+    <Compile Include="MetaData\User\UserMetaData.cs" />
+    <Compile Include="MetaData\Vacancy\VacancyMetaData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Showcases\Email\Email.cs" />
+    <Compile Include="Showcases\News\AddNews.cs" />
+    <Compile Include="Showcases\News\EditNews.cs" />
+    <Compile Include="Showcases\OnlineAppointment\SendOnlineAppointment.cs" />
+    <Compile Include="Showcases\ProductCategory\AddProductCategory.cs" />
+    <Compile Include="Showcases\ProductCategory\EditProductCategory.cs" />
+    <Compile Include="Showcases\PhotoAlbum\AddPhotoAlbum.cs" />
+    <Compile Include="Showcases\PhotoAlbum\EditPhotoAlbum.cs" />
+    <Compile Include="Showcases\PhotoGallery\AddPhotoGallery.cs" />
+    <Compile Include="Showcases\PhotoGallery\EditPhotoGallery.cs" />
+    <Compile Include="Showcases\Photo\AddPhotoAlbum.cs" />
+    <Compile Include="Showcases\Photo\EditPhotoAlbum.cs" />
+    <Compile Include="Showcases\Product\AddProduct.cs" />
+    <Compile Include="Showcases\Product\EditProduct.cs" />
+    <Compile Include="Showcases\Review\AddReview.cs" />
+    <Compile Include="Showcases\Review\EditReview.cs" />
+    <Compile Include="Showcases\ServiceCategory\AddServiceCategory.cs" />
+    <Compile Include="Showcases\ServiceCategory\DtoServiceCategory.cs" />
+    <Compile Include="Showcases\ServiceCategory\EditServiceCategory.cs" />
+    <Compile Include="Showcases\ServiceSubcategory\AddServiceSubcategory.cs" />
+    <Compile Include="Showcases\ServiceSubcategory\DtoServiceSubcategory.cs" />
+    <Compile Include="Showcases\ServiceSubcategory\EditServiceSubcategory.cs" />
+    <Compile Include="Showcases\Service\AddService.cs" />
+    <Compile Include="Showcases\Service\EditService.cs" />
+    <Compile Include="Showcases\User\LoginUser.cs" />
+    <Compile Include="Showcases\Vacancy\AddVacancy.cs" />
+    <Compile Include="Showcases\Vacancy\EditVacancy.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

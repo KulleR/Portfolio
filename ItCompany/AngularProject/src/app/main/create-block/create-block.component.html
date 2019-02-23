@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-between bd-highlight mb-3 content-header sty-one">
+  <div class="company-logo">
+    <img src="/src/assets/img/voca_logo_white.png">
+  </div>
+  <div class="microphone-activity" [ngClass]="{'speaking': isMicDetected}">
+    
+  </div>
+
+  <button class="btn btn-link text-white exit-button" (click)="logout()">Logout</button>
+</div>
+
+<div class="content">
+  <form [formGroup]="createBlockForm" (ngSubmit)="OnSubmit(createBlockForm)">
+    <div class="form-group" [ngClass]="displayFieldGroupValidationClass('header')">
+      <label>Header</label>
+      <input type="email" class="form-control" formControlName="header" placeholder="Header" [ngClass]="displayFieldValidationClass('header')">
+      <app-show-input-errors [control]="createBlockForm.controls.header"></app-show-input-errors>
+    </div>
+    <div class="form-group" [ngClass]="displayFieldGroupValidationClass('text')">
+      <label>Text</label>
+      <input type="email" class="form-control" formControlName="text" placeholder="Text" [ngClass]="displayFieldValidationClass('text')">
+      <app-show-input-errors [control]="createBlockForm.controls.text"></app-show-input-errors>
+    </div>
+
+    <button type="submit" class="btn btn-primary mr-2">Create</button>
+    <button class="btn" [routerLink]="['/']">Cancel</button>
+  </form>
+</div>

@@ -1,0 +1,89 @@
+﻿@using Deville.Models.Showcases
+@model AddProduct
+
+@{
+    ViewBag.Title = "Добавить продукт";
+    Layout = "~/Areas/Admin/Views/Layouts/AdminDefaultLayouts.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewBag.Title</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <div class="col-lg-10">
+        @using (Html.BeginForm("Add", "Product", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            
+            <div class="form-group @(IsPost && ViewData.ModelState[Html.NameFor(model => model.Title).ToString()].Errors.Count > 0 ? "has-error" : String.Empty)">
+                @Html.LabelFor(model => model.Title, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.Title, new { @class = "form-control", placeholder = Html.DisplayNameFor(model => model.Title) })
+                    <span class="help-block">@Html.ValidationMessageFor(model => model.Title)</span>
+                </div>
+            </div>
+            
+            <div class="form-group @(IsPost && ViewData.ModelState[Html.NameFor(model => model.CategoryId).ToString()].Errors.Count > 0 ? "has-error" : String.Empty)">
+                @Html.LabelFor(model => model.CategoryId, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.DropDownListFor(model => model.CategoryId, (SelectList)ViewBag.ProductCategory, "-- Выберите категорию --", new { @class = "form-control" })
+                    <span class="help-block">@Html.ValidationMessageFor(model => model.CategoryId)</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(model => model.IsNovelty, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            @Html.CheckBoxFor(model => model.IsNovelty)
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group @(IsPost && ViewData.ModelState[Html.NameFor(model => model.ImgCover).ToString()].Errors.Count > 0 ? "has-error" : String.Empty)">
+                @Html.LabelFor(model => model.ImgCover, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.ImgCover, new { type = "file", placeholder = Html.DisplayNameFor(model => model.ImgCover) })
+                    <span class="help-block">@Html.ValidationMessageFor(model => model.ImgCover)</span>
+                </div>
+            </div>
+            
+            <div class="form-group @(IsPost && ViewData.ModelState[Html.NameFor(model => model.Description).ToString()].Errors.Count > 0 ? "has-error" : String.Empty)">
+                @Html.LabelFor(model => model.Description, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control", placeholder = Html.DisplayNameFor(model => model.Description) })
+                    <span class="help-block">@Html.ValidationMessageFor(model => model.Description)</span>
+                </div>
+            </div>
+            
+            <div class="form-group @(IsPost && ViewData.ModelState[Html.NameFor(model => model.Price).ToString()].Errors.Count > 0 ? "has-error" : String.Empty)">
+                @Html.LabelFor(model => model.Price, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.Price, new { @class = "form-control", placeholder = Html.DisplayNameFor(model => model.Price) })
+                    <span class="help-block">@Html.ValidationMessageFor(model => model.Price)</span>
+                </div>
+            </div>
+            
+            <div class="form-group @(IsPost && ViewData.ModelState[Html.NameFor(model => model.Article).ToString()].Errors.Count > 0 ? "has-error" : String.Empty)">
+                @Html.LabelFor(model => model.Article, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.Article, new { @class = "form-control", placeholder = Html.DisplayNameFor(model => model.Article) })
+                    <span class="help-block">@Html.ValidationMessageFor(model => model.Article)</span>
+                </div>
+            </div>
+        
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Добавить</button>
+                @Html.ActionLink("Отмена", "Index", new { }, new { @class = "btn btn-default" })
+            </div>
+        }
+    </div>
+</div>
+

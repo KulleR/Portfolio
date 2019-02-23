@@ -1,0 +1,86 @@
+﻿@using BrioStroy;
+<!doctype html>
+<html>
+<head>
+    <title>БРИО-СТРОЙ</title>
+    <meta charset="windows-1251" />
+
+    @RenderSection("styles", false)
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/jquery.jscrollpane.css")" media="all" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/reset.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/forms.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/buttons.css")">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/style.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/specific-styles.css")">
+    <link rel="shortcut icon" type="image/png" href="@Url.Content("~/Content/images/favicon.ico")"/>
+
+    <script src="@Url.Content("~/Content/js/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/jquery.mousewheel.js")"></script>
+    <script src="@Url.Content("~/Content/js/jquery.jscrollpane.js")"></script>
+    <script src="@Url.Content("~/Content/js/init.js")" charset="windows-1251"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="header">
+            <div class="menu">
+                <ul>
+                    <li>
+                        @Html.ActionLink("ГЛАВНАЯ", "Index", "Home", new { }, new { @class = @Html.IsSelected("Home", "Index") })
+                    </li>
+                    <li>
+                        @Html.ActionLink("О КОМПАНИИ", "About", "Articles", new { }, new { @class = @Html.IsSelected("Articles", "About") })
+                    </li>
+                    <li>
+                        @Html.ActionLink("ОБЪЕКТЫ", "Index", "Portfolio", new { }, new { @class = "price " + @Html.IsSelected("Portfolio", "Index") })
+                    </li>
+                    <li>
+                        <a href="/" class="logo">
+                            <div class="loupe"></div>
+                        </a>
+                    </li>
+                    <li>
+                        @Html.ActionLink("ДОКУМЕНТЫ", "GetAll", "Document", new { }, new { @class = @Html.IsSelected("Document", "GetAll") })
+                    </li>
+                    <li>
+                        @Html.ActionLink("ОТЗЫВЫ", "GetAll", "Review", new { }, new { @class = @Html.IsSelected("Review", "GetAll") })
+                    </li>
+                    <li>
+                        @Html.ActionLink("КОНТАКТЫ", "Index", "Contact", new { }, new { @class = "price " + @Html.IsSelected("Contact", "Index") })
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <section class="content">
+            <a class="button-error pure-button login-button" target="_blank" href="http://portal.briogroup.ru">Вход для клиентов</a>
+            @RenderBody()
+        </section>
+        <footer id="footer">
+            <div class="bottom-logo">
+                <a href="http://briogroup.ru" title="Группа компаний" target="_blank">БРИО
+                    <div class="company">
+                        группа компаний
+                    </div>
+                </a>
+            </div>
+
+            <p class="center">
+                Создание сайта - "<a href="http://actpr.ru" title="Агенство интернет-решений" target="_blank">Актуальное Продвижение</a>"
+            </p>
+        </footer>
+    </div>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-59851063-5', 'auto');
+        ga('send', 'pageview');
+
+</script>
+</body>
+</html>

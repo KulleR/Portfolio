@@ -1,0 +1,10 @@
+import '../assets/img/img1.jpg';
+import '../assets/img/img2.jpg';
+import '../assets/img/img3.jpg';
+import '../assets/img/img4.jpg';
+import '../assets/img/img5.jpg';
+import '../assets/img/logo-blue.png';
+import '../assets/img/logo-n-blue.png';
+import '../assets/img/voca_logo_white.png';
+import '../assets/img/VT_pattern3.png';
+import '../assets/img/voca_favicon.ico';

@@ -1,0 +1,51 @@
+﻿@using Deville.EntityDataModel
+@model IEnumerable<Vacancy>
+
+@{
+    ViewBag.Title = "Вакансии";
+    Layout = "~/Views/Layouts/DefaultLayouts.cshtml";
+}
+
+@section styles {
+    <style>
+        .main-content .top {
+            background-image: url('/content/img/banner_vac.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 300px;
+        }
+    </style>
+}
+
+<section class="top">
+    <!-- There located top bckg image, which different in other pages -->
+    <header class="capital-letter-pink">
+        Вакансии
+    </header>
+</section>
+<section class="content">
+    @foreach (Vacancy v in Model)
+    {
+        <div class="v-block pure-g">
+            <div class="pure-u-3-5">
+                <img src="@v.ImgCover" alt="" title="" />
+            </div>
+            <div class="pure-u-2-5">
+                <div class="v-description">
+                    <h2 class="capital-letter-pink">@v.Title
+                    </h2>
+                    <p>@v.Description</p>
+                    <p>Обязанности: @v.Demands</p>
+                    <p>Требования: @v.Duties</p>
+                    <p>Условия: @v.Duties</p>
+
+                    <p>Телефон: +7(843) 515-60-60</p>
+                </div>
+            </div>
+        </div>
+    }
+    @if (Model.Count() == 0)
+    {
+        @: Нет ни одной вакансии.
+    }
+</section>

@@ -1,0 +1,27 @@
+<ng-progress [color]="'blue'" [showSpinner]="false"></ng-progress>
+
+<nav class="navbar navbar-light bg-light">
+    <div class="navbar-collapse" id="navbarSupportedContent">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="filter" (keyup)="onFilterCange()">
+    </div>
+</nav>
+
+<div class="list-group" *ngIf="ecodes">
+    <a *ngFor="let ecode of ecodes" [routerLink]="['/ecodes', ecode.code]" class="list-group-item list-group-item-action">
+        <div class="row align-items-center">
+            <div class="col-4 col-sm-2 h4">
+                <span class="badge" [ngClass]="
+                      {'badge-success': ecode.status == 0,
+                      'badge-danger': ecode.status == 1,
+                      'badge-warning': ecode.status == 2,
+                      'badge-secondary': ecode.status == 3}">
+                    {{ ecode.code }}
+                </span>
+            </div>
+            <div class="col-8 col-sm-10">
+                <p class="h5">{{ ecode.statusName }}</p>
+                {{ ecode.ingredients }}
+            </div>
+        </div>
+    </a>
+</div>

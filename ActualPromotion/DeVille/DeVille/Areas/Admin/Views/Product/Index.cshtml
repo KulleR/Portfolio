@@ -1,0 +1,76 @@
+﻿@using Deville.EntityDataModel
+@model IEnumerable<ProductCategory>
+@{
+    ViewBag.Title = "Услуги";
+    Layout = "~/Areas/Admin/Views/Layouts/AdminDefaultLayouts.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Продукты</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        @if (Model.Count() > 0)
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Категории
+                </div>
+                <!-- .panel-heading -->
+                <div class="panel-body">
+                    <div class="panel-group" id="accordion">
+                        @foreach (ProductCategory pc in Model)
+                        {
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne@(pc.Id)" aria-expanded="false" class="collapsed">@pc.Title</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne@(pc.Id)" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                                    <div class="panel-body">
+                                        @foreach (Product p in pc.Products)
+                                        {
+                                            <div class="col-sm-6 col-md-4 col-lg-3">
+                                                <div class="thumbnail">
+                                                    <img src="@p.ImgCover" title="@p.Title"/>
+                                                    <div class="caption">
+                                                        <h3>@p.Title</h3>
+                                                        <p>@p.Description</p>
+                                                        <p>@Html.ActionLink("Редактировать", "Edit", new { id = p.Id }, new { @class = "btn btn-primary", role = "button" })
+                                                            @Html.ActionLink("Удалить", "Delete", new { id = p.Id }, new { @class = "btn btn-default", role = "button", onclick = "return confirm('Удалить запись?')" })
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        @if (!(pc.Products.Count > 0))
+                                        {
+                                            @:Продуктов нет.
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- .panel-body -->
+            </div>
+            <!-- /.panel -->
+            
+            <!-- /.col-lg-12 -->
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                Ни одного продукта не существует.
+            </div>
+        }
+    </div>
+</div>
+<div class="col-sm-offset-4 col-sm-4">
+    @Html.ActionLink("Добавить", "Add", new { }, new { @class = "btn btn-primary btn-lg btn-block" })
+</div>
